@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113.65">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="es"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Overlay Repartidores (Solo HTML)&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Estilos básicos para una presentación limpia */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: Arial, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: transparent; /* Importante para transparencia en OBS */</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #FFFFFF; /* Texto en blanco para mejor visibilidad en overlay */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Contenedor principal */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#overlayContainer {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Estilo para cada bloque de repartidor */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.repartidor {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Título del repartidor */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.repartidor h2 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 0 10px 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.5em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Información detallada */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.repartidor p {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 5px 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Separador */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>hr {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-top: 1px solid #FFFFFF;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 10px 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Contenedor principal donde se inyectarán los datos --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="overlayContainer"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// URL de tu Apps Script (Web App publicada)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const API_URL = "https://script.google.com/macros/s/AKfycbxZ6EzX1nXzkMxvS2g-ysweXqmgw4gNZQXl9PLfX_V2g1Wxaf5ne0yMEqElQ8ag4PKA/exec";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Al cargar la página</p>
+<p class="p1"><span class="Apple-converted-space">    </span>fetchData();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Recargar cada 60 segundos</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setInterval(fetchData, 60000);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function fetchData() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resp = await fetch(API_URL);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!resp.ok) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>throw new Error(`HTTP error! status: ${resp.status}`);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const registros = await resp.json();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderData(registros);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} catch (error) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>console.error("Error al cargar datos:", error);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderData(registros) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Contenedor de las tarjetas</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const container = document.getElementById("overlayContainer");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>container.innerHTML = ""; // Limpiar contenido previo</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Fecha de hoy (para filtrar)</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const hoy = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const hoySinHora = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const MS_EN_DIA = 24 * 60 * 60 * 1000;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Agrupar la data por repartidor</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const agrupado = {};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>registros.forEach(reg =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const rep = reg.repartidor;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!agrupado[rep]) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>agrupado[rep] = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ultFecha: null,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>hoyPedidos: 0,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>hoyGanancias: 0,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>hoyHoras: 0</p>
+<p class="p1"><span class="Apple-converted-space">          </span>};</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Parsear fecha en "DD-MM-yyyy"</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const fechaReg = parseDDMMYYYY(reg.fecha);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Actualizar última fecha si es más reciente</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!agrupado[rep].ultFecha || fechaReg &gt; agrupado[rep].ultFecha) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>agrupado[rep].ultFecha = fechaReg;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Ver si corresponde a HOY</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const fechaRegSinHora = new Date(</p>
+<p class="p1"><span class="Apple-converted-space">          </span>fechaReg.getFullYear(),</p>
+<p class="p1"><span class="Apple-converted-space">          </span>fechaReg.getMonth(),</p>
+<p class="p1"><span class="Apple-converted-space">          </span>fechaReg.getDate()</p>
+<p class="p1"><span class="Apple-converted-space">        </span>);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (fechaRegSinHora.getTime() === hoySinHora.getTime()) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>agrupado[rep].hoyPedidos += parseFloat(reg.pedidos) || 0;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>agrupado[rep].hoyGanancias += parseFloat(reg.ganancias) || 0;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>agrupado[rep].hoyHoras += parseFloat(reg.horasTrabajadas) || 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Mostrar repartidores (ocultar si +7 días inactivos)</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Object.keys(agrupado).forEach(rep =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const info = agrupado[rep];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const diffDias = (hoy - info.ultFecha) / MS_EN_DIA;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (diffDias &gt; 7) return; // No mostramos si +7 días sin actividad</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Calcular media/h de hoy</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let mediaHoy = 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (info.hoyHoras &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>mediaHoy = info.hoyGanancias / info.hoyHoras;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Crear un bloque de información</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const block = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>block.className = "repartidor";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Nombre del repartidor</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const name = document.createElement("h2");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>name.textContent = rep;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>block.appendChild(name);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Pedidos de hoy</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const pedidos = document.createElement("p");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>pedidos.textContent = `Pedidos (Hoy): ${info.hoyPedidos.toFixed(0)}`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>block.appendChild(pedidos);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Ganancias de hoy</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const ganancias = document.createElement("p");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>ganancias.textContent = `Ganancias (Hoy): $${info.hoyGanancias.toFixed(2)}`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>block.appendChild(ganancias);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Media/h de hoy</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const media = document.createElement("p");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>media.textContent = `Media/h (Hoy): $${mediaHoy.toFixed(2)}`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>block.appendChild(media);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Última actividad</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const ultima = document.createElement("p");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>ultima.textContent = `Última actividad: ${formatearFecha(info.ultFecha)}`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>block.appendChild(ultima);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Añadir bloque al contenedor</p>
+<p class="p1"><span class="Apple-converted-space">        </span>container.appendChild(block);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Convierte "DD-MM-yyyy" a objeto Date</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function parseDDMMYYYY(str) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const [dia, mes, anio] = str.split("-").map(Number);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return new Date(anio, mes - 1, dia);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Formatea Date como "DD-MM-yyyy"</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function formatearFecha(fecha) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!fecha) return "";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const y = fecha.getFullYear();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const m = String(fecha.getMonth() + 1).padStart(2, '0');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const d = String(fecha.getDate()).padStart(2, '0');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return `${d}-${m}-${y}`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
